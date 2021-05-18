@@ -21,10 +21,9 @@
         <div class="note" v-for="(note, index) in notes" :key="index">
           <div>
             <span @click="remove(index)">&#10005;</span>&nbsp;
-            <form v-if="editingIndex === index" @submit.prevent="updateTask(index, note)">
-              <input required type="text" v-model="note">
+            <form style="display: inline;" @submit.prevent="updateTask(index, note)" @click="editTask(index)">
+              <input required type="text" :ref="'task' + index" disabled v-model="note">
             </form>
-            <span v-else @click="editTask(index)">{{note}}</span>
           </div>
         </div>
       </div>

@@ -14,12 +14,13 @@ const App = {
     this.getNotes();
   },
   methods: {
-    updateTask(index, newValue){
+    updateTask(index, newValue, event){
       this.notes[index] = newValue;
       this.editingIndex = false;
+      this.$refs['task'+index].disabled = true;
     },
     editTask(index){
-      this.editingIndex = index;
+      this.$refs['task'+index].disabled = false;
     },
     getNotes(){
       const localNotes = localStorage.getItem('notes');
