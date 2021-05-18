@@ -14,7 +14,7 @@ const App = {
     this.getNotes();
   },
   methods: {
-    updateTask(index, newValue, event){
+    updateTask(index, newValue){
       this.notes[index] = newValue;
       this.editingIndex = false;
       this.$refs['task'+index].disabled = true;
