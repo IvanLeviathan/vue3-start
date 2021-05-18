@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- vue app start -->
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <form @submit.prevent="onSubmit">
+        <input type="text" v-model="input.value" :placeholder="input.placeholder" required>
+        <button type="submit">Add new note</button>
+      </form>
+
+      <div class="notes">
+        <div class="note" v-for="(note, index) in notes" :key="index">
+          <div>
+            <span @click="remove(index)">&#10005;</span>&nbsp;
+            <form v-if="editingIndex === index" @submit.prevent="updateTask(index, note)">
+              <input required type="text" v-model="note">
+            </form>
+            <span v-else @click="editTask(index)">{{note}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- vue app end -->
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
