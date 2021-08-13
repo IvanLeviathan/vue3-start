@@ -13,6 +13,7 @@ const App = {
   mounted(){
     this.getNotes();
   },
+  
   methods: {
     updateTask(index, newValue){
       this.notes[index] = newValue;
